@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const superheroSchema = new mongoose.Schema({
+  nume: { type: String, required: true },
+  alias: String,
+  descriere: String,
+  putere_principala: String,
+  univers: { type: String, enum: ['Marvel', 'DC', 'Altele'] }, // Exemplu de câmp pentru filtrare
+  status: { type: String, default: 'Activ' },
+  imagine: { type: String } // Aici vom salva string-ul lung Base64
+});
+
+module.exports = mongoose.model('Superhero', superheroSchema);
